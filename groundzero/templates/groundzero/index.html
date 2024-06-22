@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css '%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+        /* Estilos para la animación de carga */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            /* Fondo blanco */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            /* Asegura que la capa de carga esté por encima de todo */
+        }
+
+
+
+
+        .loading-bar {
+            width: 100%;
+            max-width: 300px;
+            /* Ancho máximo de la barra de carga */
+            height: 10px;
+            /* Altura de la barra de carga */
+            background-color: #ccc;
+            /* Color de fondo de la barra de carga */
+            margin-top: 20px;
+            /* Margen superior */
+            border-radius: 5px;
+            /* Borde redondeado */
+            overflow: hidden;
+            /* Oculta el desbordamiento */
+        }
+
+        .loading-progress {
+            width: 0;
+            /* Inicialmente, sin progreso */
+            height: 100%;
+            /* Altura completa */
+            background-color: #000;
+            /* Color de la barra de carga */
+            transition: width 1s ease-in-out;
+            /* Transición suave */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Capa de carga -->
+    <div class="loading-overlay">
+        <i class="bi bi-palette"></i> <!-- Icono de la paleta -->
+        <div class="loading-bar">
+            <div class="loading-progress"></div> <!-- Barra de carga -->
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand" data-bs-theme="dark">
+        <div class="container-fluid">
+            <!-- Logo en el navbar -->
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'img/logo2.png' %}"
+                    alt="Logo" width="50" height="50" class="d-inline-block align-top" />
+            </a>
+            <!-- Fin del logo -->
+            <a class="navbar-brand" href="{% url 'index' %}">Ground-Zero</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'catalogo' %}">Catalogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Artistas' %}">Artistas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Iniciar Sesion
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Inicia sesion</a></li>
+                            <li><a class="dropdown-item" href="{% url 'registro' %}">Registrate</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                    </li>
+                </ul>
+                <form class="d-flex" role="buscar">
+                    <input class="form-control me-2" type="search" placeholder="buscar" aria-label="Buscar">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!--carousel-->
+
+    <section class="carousel-section">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'img/Yan-Pei-Ming-Chien-de-nuit-2015-Oil-on-canvas-73-x-92-cm-2874-x-3622-in-Courtesy-Yan-Pei-Ming.jpg' %}"
+                        class="d-block w-100" alt="primera foto">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>Aggressive Beauty</h2>
+                        <p>Yan Pei-Ming.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'img/la noche estrellada.jpg' %}" class="d-block w-100" alt="segunda foto">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>La noche estrellada</h2>
+                        <p>Vincent Van Gogh</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'img/elgrito.jpg' %}" class="d-block w-100" alt="tercera foto">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>El grito</h2>
+                        <p>Edvard Munch.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    <div style="background-color: bisque;">
+        <select name="ciudad" id="city" style="margin: 2cap;">
+            <option value="viña del mar">Viña del mar</option>
+            <option value="valparaiso">Valparaiso</option>
+            <option value="santiago de chile">Santiago</option>
+        </select>
+        <button id="btnclima"> el clima es </button>
+    </div>
+    <div class="card-fluid" style="background-color: rgb(255, 191, 113); justify-content: center;">
+        <div id="resultado"></div>
+    </div>
+
+
+    <script src='{% static "js/clima.js" %}' type="text/javascript" ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        // Elimina la capa de carga cuando el contenido esté completamente cargado
+        window.addEventListener('load', function () {
+            const loadingOverlay = document.querySelector('.loading-overlay');
+            loadingOverlay.style.transition = 'opacity 20s'; // Animación más lenta
+            loadingOverlay.style.opacity = '0'; // Oculta la capa de carga
+            setTimeout(function () {
+                loadingOverlay.style.display = 'none'; // Elimina la capa de carga del DOM
+            }, 1000); // Tiempo de espera de 1 segundo antes de eliminar la capa de carga
+        });
+    </script>
+    </script>
+
+</body>
+
+</html>
