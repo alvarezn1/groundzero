@@ -41,7 +41,7 @@ def crud(request):
     return render(request, 'groundzero/artistas_list.html',context)
 
 def artistasAdd(request):
-    if request.method is not "POST":
+    if request.method != "POST":
         generos=Genero.objects.all()
         context={'generos':generos}
         return render(request, 'groundzero/artistas_add.html',context)
