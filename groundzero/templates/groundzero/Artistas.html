@@ -110,6 +110,29 @@
                     <input class="form-control me-2" type="search" placeholder="buscar" aria-label="Buscar">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
+                <div class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="bi bi-cart-fill"></i>
+                        <span class="badge bg-danger" id="cart-count">0</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown"
+                        id="cart-dropdown-menu">
+                        <li>
+                            <h6 class="dropdown-header">Carrito de Compras</h6>
+                        </li>
+                        <li>
+                            <div id="cart-items"></div>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <p class="dropdown-item">Total: <span id="cart-total">0</span></p>
+                        </li>
+                        <li><button class="dropdown-item" id="checkout-button">Finalizar Compra</button></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
@@ -160,6 +183,7 @@
     </div>
 
 
+    <script src='{% static "js/cart.js" %}' type="text/javascript" ></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
